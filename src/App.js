@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       {!showChat ? (
         <div className="joinChatContainer">
-          <h3>Chat App for Blockchain!</h3>
+          <h3>Nuka's chat app BITCH!</h3>
           <input
             type="text"
             placeholder="Goku"
