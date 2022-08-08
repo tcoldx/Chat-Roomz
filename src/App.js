@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Chat from "./Chat";
 import io from "socket.io-client";
 
-const socket = io.connect("https://chattytings.herokuapp.com/");
+const socket = io.connect("https://cryptoz-chat.herokuapp.com/");
 
 function App() {
   const [username, setUsersame] = useState("");
@@ -17,11 +17,17 @@ function App() {
     }
   };
 
+  const handleClick = () => {
+    setShowChat(false)
+    setRoom("")
+    setUsersame("")
+  }
+
   return (
     <div className="App">
       {!showChat ? (
         <div className="joinChatContainer">
-          <h3>Nuka's chat app BITCH!</h3>
+          <h3>Welcome to Chat Roomz!</h3>
           <input
             type="text"
             placeholder="Goku"
@@ -29,13 +35,13 @@ function App() {
           />
           <input
             type="text"
-            placeholder="room id.."
+            placeholder="room name.."
             onChange={(e) => setRoom(e.target.value)}
           />
           <button onClick={roomEnter}>Join room!</button>
         </div>
       ) : (
-        <Chat socket={socket} user={username} room={room} />
+        <Chat socket={socket} user={username} room={room} handleClick={handleClick}/>
       )}
     </div>
   );
